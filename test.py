@@ -6,9 +6,6 @@ web_contexts=[]
 
 desired_caps={}
 
-
-#this is for android device - not simulator
-
 desired_caps['platformName']='Android'
 
 #this is the android version you want to target- this should match the android version in the device
@@ -16,30 +13,17 @@ desired_caps['platformVersion']='6.0.1'
 
 desired_caps['deviceName']='samsung'
 
-#desired_caps['browserName']='Chrome'
-
-desired_caps['app']=os.path.join('/home/aj/Downloads/desti2016.apk')
-
-#sample path me look like /User/aj/Downloads/appium/destimoney.apk
-
+desired_caps['app']=os.path.join('path/of/your/apk')
 
 driver = webdriver.Remote('http://localhost:4723/wd/hub',desired_caps)
 
-#now locate the elements and do your operation
-#this is just a demo
-#replace with original locators in the apk/app
-
-time.sleep(15)
+#now locate the elements using chrome inspect 
 
 #switches context to webview since Appium cannot work with webview
 
 print(driver.current_context)
 
 web_contexts = driver.contexts
-
-for p in web_contexts:
-    print(p)
-
 
 # it would print NATIVE_APP, WEBVIEW_com.app.destimoney
 
@@ -81,10 +65,10 @@ driver.find_element_by_id("login_btn").click()
 # driver.find_element_by_xpath('(//*[@class="text-input text-input-md"])[3]').send_keys("verma")
 # time.sleep(1)
 #
-# driver.find_element_by_xpath('(//*[@class="text-input text-input-md"])[4]').send_keys("ruhi461@gmail.cof")
+# driver.find_element_by_xpath('(//*[@class="text-input text-input-md"])[4]').send_keys("id")
 # time.sleep(1)
 #
-# driver.find_element_by_xpath('(//*[@class="text-input text-input-md"])[5]').send_keys("8591771290")
+# driver.find_element_by_xpath('(//*[@class="text-input text-input-md"])[5]').send_keys("123455677")
 # time.sleep(1)
 #
 # driver.find_element_by_xpath('(//*[@class="text-input text-input-md"])[6]').send_keys("111111")
@@ -106,14 +90,6 @@ time.sleep(5)
 
 # google sign in
 driver.find_element_by_xpath('//span[contains(text(),"Google")]').click()
-
-# login
-# driver.find_element_by_xpath('(//*[@class="text-input text-input-md"])[1]').send_keys("ruhi461@gmail.com")
-# driver.find_element_by_xpath('(//*[@class="text-input text-input-md"])[2]').send_keys("111111")
-# time.sleep(2)
-# driver.find_element_by_xpath('//span[contains(text(),"Sign In")]').click()
-# clicks on complete profile
-
 time.sleep(10)
 # driver.find_elements_by_css_selector('[ng-reflect-name="menu"]').click()
 driver.find_elements_by_css_selector("ion-icon.icon.icon-md.ion-md-menu").click()
